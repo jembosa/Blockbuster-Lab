@@ -1,4 +1,4 @@
-﻿namespace Blockbuster_Lab
+﻿namespace MovieDatabase
 {
     class Program
     {
