@@ -29,15 +29,16 @@
                 string userCategory = Console.ReadLine().ToLower();
 
                 bool categoryFound = false;
+                Console.WriteLine("");
+                Console.Write("You should try: ");
 
                 foreach (var movie in movies)
                 {
                     if (movie.Category.ToLower() == userCategory)
                     {
-                        Console.WriteLine("");
-                        Console.Write("You should try:");
-                        Console.WriteLine($" {movie.Title}");
-                        Console.WriteLine("Or");
+                        
+                        Console.WriteLine($"'{movie.Title}'");
+                        Console.Write("Or ");
                         categoryFound = true;
                     }
                 }
@@ -47,14 +48,23 @@
                     Console.WriteLine("No movies found in that category.");
                 }
 
-                Console.Write("Do you want to search again? (y/n) ");
-                string continueInput = Console.ReadLine().ToLower();
-                if (continueInput != "y")
+                while (true)
                 {
-                    //end
-                    break;
+                    Console.Write("Would you like another suggestion? (y/n)? ");
+                    string continueInput = Console.ReadLine().ToLower();
+                    if (continueInput == "n")
+                    {
+                        return; // Exit 
+                    }
+                    else if (continueInput == "y")
+                    {
+                        break; // Continue and loop back to prompt
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter 'y' to continue or 'n' to stop.");
+                    }
                 }
-
             }
         }
     }
